@@ -1,0 +1,11 @@
+{
+  "name": "nexus-dashboard",
+  "version": "1.0.0",
+  "description": "Cyberpunk Phishing Intelligence Dashboard",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
