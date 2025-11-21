@@ -1,31 +1,32 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Terminal, Music, Shield, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 const Layout = ({ children }) => {
   const location = useLocation();
-
   const isActive = (path) => location.pathname === path ? 'active' : '';
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <nav className="fixed top-0 w-full z-50 glass-panel border-b-0 rounded-none border-b border-white/10">
-        <div className="container mx-auto h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-2xl font-bold tracking-tighter">
-            <Zap className="text-blue-500" />
-            GROK<span className="text-blue-500">APP</span>
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#0a0a0f] to-[#1a1a2e]">
+      <nav className="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-white/10">
+        <div className="container mx-auto flex justify-between items-center py-4">
+          <Link to="/" className="text-2xl font-black tracking-tighter hover:text-blue-500 transition">
+            GROK
           </Link>
 
-          <div className="flex gap-8">
-            <Link to="/" className={`nav-link ${isActive('/')}`}>TRUTH</Link>
+          <div className="flex items-center gap-8">
+            <Link to="/" className={`nav-link ${isActive('/')}`}>HOME</Link>
             <Link to="/coding" className={`nav-link ${isActive('/coding')}`}>BUILD</Link>
             <Link to="/entertainment" className={`nav-link ${isActive('/entertainment')}`}>PLAY</Link>
           </div>
 
-          <Link to="/community" className="btn-primary text-sm px-6 py-2 no-underline inline-block">
-            Connect
-          </Link>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Link to="/community" className="btn-primary text-sm px-6 py-2 no-underline inline-block">
+              Connect
+            </Link>
+          </div>
         </div>
       </nav>
 

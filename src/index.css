@@ -1,20 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  --bg-deep: #050507;
-  --bg-card: #0f111a;
+  /* Dark Theme (Default) */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #1a1a2e;
   --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --accent-primary: #3b82f6;
-  /* Electric Blue */
-  --accent-glow: rgba(59, 130, 246, 0.5);
-  --accent-secondary: #8b5cf6;
-  /* Neon Purple */
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(15, 17, 26, 0.6);
+  --text-secondary: #a0a0a0;
+  --accent-primary: #3B82F6;
+  --accent-secondary: #A855F7;
+  --accent-glow: #3B82F6;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --border-color: rgba(255, 255, 255, 0.08);
 
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --accent-primary: #2563EB;
+  --accent-secondary: #9333EA;
+  --accent-glow: #2563EB;
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --border-color: rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -24,8 +37,9 @@
 }
 
 body {
-  background-color: var(--bg-deep);
+  background: var(--bg-primary);
   color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
   font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
@@ -288,4 +302,68 @@ h1 {
   100% {
     clip: rect(45px, 9999px, 24px, 0);
   }
+}
+
+/* Workspace Layout Utilities */
+.workspace-panel {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.panel-resizer {
+  position: absolute;
+  background: transparent;
+  transition: background-color 0.2s;
+  z-index: 10;
+}
+
+.panel-resizer:hover {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.panel-resizer.horizontal {
+  width: 4px;
+  height: 100%;
+  cursor: col-resize;
+}
+
+.panel-resizer.vertical {
+  width: 100%;
+  height: 4px;
+  cursor: row-resize;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Tab Styles */
+.file-tab {
+  position: relative;
+  transition: all 0.2s;
+}
+
+.file-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-primary);
 }
